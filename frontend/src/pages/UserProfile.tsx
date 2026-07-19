@@ -40,16 +40,27 @@ export default function UserProfile() {
         </div>
         <Sheet>
           {/* profile header */}
-          <div className="mb-[26px] flex items-center gap-4 border-b-2 border-divider pb-[22px]">
-            <GithubAvatar author={author} size={64} border="#b89a63" />
-            <div>
-              <div className="mb-1 font-display text-[13px] tracking-[4px] text-ink-soft">
-                {t.adventurerLabel}
+          <div className="mb-[26px] flex items-center justify-between gap-4 border-b-2 border-divider pb-[22px]">
+            <div className="flex items-center gap-4">
+              <GithubAvatar author={author} size={64} border="#b89a63" />
+              <div>
+                <div className="mb-1 font-display text-[13px] tracking-[4px] text-ink-soft">
+                  {t.adventurerLabel}
+                </div>
+                <h1 className="font-display text-[32px] font-black leading-tight text-ink max-md:text-[24px]">
+                  {authorLabel(author)}
+                </h1>
               </div>
-              <h1 className="font-display text-[32px] font-black leading-tight text-ink max-md:text-[24px]">
-                {authorLabel(author)}
-              </h1>
             </div>
+              <a
+                href={`https://github.com/${author}`}
+                target="_blank"
+                rel="noreferrer"
+                onMouseEnter={tick}
+                className="shrink-0 text-[15px] text-crimson underline underline-offset-2"
+              >
+                GitHub ↗
+              </a>
           </div>
 
           {!profile ? (

@@ -9,10 +9,14 @@ import {
   missionTypeAccent,
   missionTypeKey,
   missions,
+  SKILL_URL,
 } from "../lib/data";
 import type { Mission } from "../lib/data";
 import { formatNumber, useI18n, withLang } from "../lib/i18n";
 import { useSound } from "../lib/sound";
+
+// The visible URL text embedded in every translation of `scrollInstruction`.
+const SKILL_LINK_TEXT = SKILL_URL.replace(/^https?:\/\//, "");
 
 function MissionCard({ q }: { q: Mission }) {
   const { tick, chime } = useSound();
@@ -146,6 +150,9 @@ function AdventurerScroll() {
   const [open, setOpen] = useState(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const prompt = genericAgentPrompt();
+  // The instruction embeds the human-readable skill.md URL in every language;
+  // split on it so we can render it as a real link between the plain text.
+  const scrollParts = t.scrollInstruction.split(SKILL_LINK_TEXT);
 
   useEffect(() => {
     const timer = setTimeout(() => setOpen(true), 500);
@@ -167,11 +174,26 @@ function AdventurerScroll() {
         className="scroll-paper px-10 py-6 pb-[52px] text-left transition-[clip-path] duration-[900ms] ease-out motion-reduce:transition-none"
         style={{ clipPath: open ? "inset(-24px 0 -24px 0)" : "inset(-24px 100% -24px 0)" }}
       >
-        <p className="font-body text-[18px] italic leading-[1.6] text-ink-body">
-          <span className="font-display not-italic text-[15px] tracking-[1.5px] text-crimson">
+        <p className="font-body text-[18px] leading-[1.6] text-ink-body">
+          <span className="font-display text-[15px] tracking-[1.5px] text-crimson">
             {t.adventurersScroll}
           </span>{" "}
-          {t.scrollInstruction}
+          {scrollParts.map((part, i) => (
+            <span key={i}>
+              {i > 0 && (
+                <a
+                  href={SKILL_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={tick}
+                  className="text-crimson underline underline-offset-2"
+                >
+                  {SKILL_LINK_TEXT}
+                </a>
+              )}
+              {part}
+            </span>
+          ))}
         </p>
         <button
           type="button"

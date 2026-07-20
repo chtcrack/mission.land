@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import { REPO_URL } from "../lib/data";
+import { DISCORD_URL, REPO_URL } from "../lib/data";
 import { LANGS, LANG_LABELS, useI18n, withLang, type Lang } from "../lib/i18n";
 import { useSound } from "../lib/sound";
 
@@ -87,6 +87,15 @@ export function Nav({ back }: { back?: boolean }) {
             className="max-md:rounded max-md:px-2 max-md:py-1.5 max-md:hover:bg-card-hover"
           >
             {t.github}
+          </a>
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noreferrer"
+            onMouseEnter={tick}
+            className="max-md:rounded max-md:px-2 max-md:py-1.5 max-md:hover:bg-card-hover"
+          >
+            Discord
           </a>
           <div ref={langRef} className="relative max-md:px-2 max-md:py-1">
             <button

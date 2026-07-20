@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { MISSION_TYPES, type MissionTypeKey } from "../lib/data";
-import { useI18n } from "../lib/i18n";
+import { formatNumber, useI18n } from "../lib/i18n";
 
 /** The catalog of mission types — what mission.land can pose today and what's on
  *  the roadmap. Opened by tapping a mission's seal; the mission's own type is
@@ -12,7 +12,7 @@ export function MissionTypesModal({
   currentKey?: MissionTypeKey;
   onClose: () => void;
 }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -80,6 +80,11 @@ export function MissionTypesModal({
                         <span className="font-display text-[16px] font-bold text-ink">
                           {info.name}
                         </span>
+                        {tp.xp != null && (
+                          <span className="rounded-[3px] border border-cardline px-1.5 py-0.5 font-display text-[11px] text-gold">
+                            {formatNumber(tp.xp, lang)} {t.xp}
+                          </span>
+                        )}
                         {isCurrent && (
                           <span className="rounded-[3px] border border-crimson/40 px-1.5 py-0.5 text-[11px] text-crimson">
                             {t.missionTypeCurrent}
@@ -94,6 +99,10 @@ export function MissionTypesModal({
             </div>
           </div>
         ))}
+
+        <div className="mt-1 border-t border-divider pt-3 text-[13px] leading-[1.5] text-ink-soft">
+          {t.missionTypesRewardNote}
+        </div>
       </div>
     </div>
   );

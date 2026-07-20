@@ -93,11 +93,12 @@ export type HallEntry = {
 };
 
 export const REPO_URL = "https://github.com/timqian/mission.land";
+export const DISCORD_URL = "https://discord.gg/6e5JXZxycu";
 
 /** Presentation metadata the md files don't carry. New missions get defaults. */
 const META: Record<
   string,
-  Partial<Pick<Mission, "wax" | "xpPerBreakthrough" | "wikipedia" | "rewardMode" | "isProof">> & {
+  Partial<Pick<Mission, "wax" | "wikipedia" | "rewardMode" | "isProof">> & {
     /** English display name override; other languages derive from their own translated heading. */
     name?: string;
     /** Tagline per language; missing languages fall back to en, then the generic default. */
@@ -107,7 +108,6 @@ const META: Record<
   0: {
     name: "The Party Problem",
     wax: "#3a6b4f",
-    xpPerBreakthrough: 100,
     tagline: {
       en: "A tutorial trial — practice the loop",
       zh: "新手试炼——先把流程走一遍",
@@ -120,7 +120,6 @@ const META: Record<
   1: {
     name: "Ramsey R(5,5)",
     wax: "#a8801f",
-    xpPerBreakthrough: 7000,
     tagline: {
       en: "Push the lower bound",
       zh: "推进下界",
@@ -132,7 +131,6 @@ const META: Record<
   2: {
     name: "van der Waerden W(2,7)",
     wax: "#5a2d8f",
-    xpPerBreakthrough: 3000,
     tagline: {
       en: "Push the lower bound",
       zh: "推进下界",
@@ -144,7 +142,6 @@ const META: Record<
   3: {
     name: "Weak Schur WS(6)",
     wax: "#8f2d2d",
-    xpPerBreakthrough: 4000,
     tagline: {
       en: "Push the lower bound",
       zh: "推进下界",
@@ -156,7 +153,6 @@ const META: Record<
   4: {
     name: "√2 is Irrational (Lean)",
     wax: "#2d5a8f",
-    xpPerBreakthrough: 500,
     tagline: {
       en: "A tutorial trial — your first Lean proof",
       zh: "新手试炼——你的第一个 Lean 证明",
@@ -170,7 +166,6 @@ const META: Record<
   5: {
     name: "Erdős–Straus Conjecture (Lean)",
     wax: "#6b2d5a",
-    xpPerBreakthrough: 100000,
     tagline: {
       en: "Open since 1948 — resolve it, either way",
       zh: "1948 年至今悬而未决——证明或否证皆可",
@@ -184,7 +179,6 @@ const META: Record<
   6: {
     name: "Van der Waerden's Theorem (Lean)",
     wax: "#1f6b60",
-    xpPerBreakthrough: 30000,
     tagline: {
       en: "Proved in 1927 — never formalized in Lean",
       zh: "1927 年已被证明——但 Lean 形式化仍是空白",
@@ -198,7 +192,6 @@ const META: Record<
   7: {
     name: "Ramsey's Theorem (Lean)",
     wax: "#8f5a2d",
-    xpPerBreakthrough: 25000,
     tagline: {
       en: "The founding theorem of Ramsey theory — missing from mathlib",
       zh: "拉姆齐理论的奠基定理——mathlib 至今没有它",
@@ -298,6 +291,15 @@ function effectiveScore(r: RecordFile, isProof: boolean): number {
 /** Flat bonus for a breakthrough that surpasses the published literature record. */
 export const LITERATURE_BREAKTHROUGH_XP = 100000;
 
+/** Base XP reward, derived from a mission's shape rather than set per mission:
+ *  a tutorial/practice trial pays a token 100, a construction breakthrough pays
+ *  5000, and cracking a proof mission pays 100000. Surpassing a literature
+ *  record still adds the larger LITERATURE_BREAKTHROUGH_XP milestone on top. */
+function missionXp(isProof: boolean, rewardMode: Mission["rewardMode"]): number {
+  if (rewardMode === "completion") return 100; // tutorial / practice
+  return isProof ? 100000 : 5000; // proof mission vs construction breakthrough
+}
+
 function buildMission(slug: string, md: string, entries: RecordEntry[]): Mission {
   const files = entries.map((e) => e.file);
   const num = parseInt(slug.match(/^(\d+)/)?.[1] ?? "0", 10);
@@ -361,8 +363,8 @@ function buildMission(slug: string, md: string, entries: RecordEntry[]): Mission
     witness: r.witness,
   }));
 
-  const xpPerBreakthrough = meta.xpPerBreakthrough ?? 4000;
   const rewardMode = meta.rewardMode ?? "leaderboard";
+  const xpPerBreakthrough = missionXp(isProof, rewardMode);
 
   const xpBy = new Map<string, { xp: number; records: number }>();
   if (rewardMode === "completion") {
@@ -550,9 +552,15 @@ export type MissionTypeKey =
   | "code"
   | "tournament";
 
-export const MISSION_TYPES: { key: MissionTypeKey; supported: boolean; accent: string }[] = [
-  { key: "construction", supported: true, accent: "#3a6b4f" },
-  { key: "proof", supported: true, accent: "#2d5a8f" },
+export const MISSION_TYPES: {
+  key: MissionTypeKey;
+  supported: boolean;
+  accent: string;
+  /** Headline XP for the type (see missionXp); omitted for roadmap types. */
+  xp?: number;
+}[] = [
+  { key: "construction", supported: true, accent: "#3a6b4f", xp: 5000 },
+  { key: "proof", supported: true, accent: "#2d5a8f", xp: 100000 },
   { key: "minimization", supported: false, accent: "#8f2d2d" },
   { key: "certificate", supported: false, accent: "#6b4f1f" },
   { key: "proof-golf", supported: false, accent: "#2d6b60" },

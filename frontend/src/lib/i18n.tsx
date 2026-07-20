@@ -92,6 +92,7 @@ type Dict = {
   missionTypesSupported: string;
   missionTypesPlanned: string;
   missionTypeCurrent: string;
+  missionTypesRewardNote: string;
   missionTypes: Record<string, { short: string; name: string; desc: string }>;
   verifiedRecord: string;
   pctClaimed: (pct: number) => string;
@@ -191,6 +192,8 @@ const EN: Dict = {
   missionTypesSupported: "Available now",
   missionTypesPlanned: "On the roadmap",
   missionTypeCurrent: "this mission",
+  missionTypesRewardNote:
+    "XP is awarded per breakthrough. Tutorial trials pay a flat 100 XP; surpassing a published literature record pays a 100,000 XP milestone bonus.",
   missionTypes: {
     construction: {
       short: "BUILD",
@@ -325,6 +328,8 @@ const ZH: Dict = {
   missionTypesSupported: "现已支持",
   missionTypesPlanned: "规划中",
   missionTypeCurrent: "本任务",
+  missionTypesRewardNote:
+    "XP 按每次突破发放。新手试炼固定 100 XP;超越已发表的文献纪录再奖励 100,000 XP 里程碑。",
   missionTypes: {
     construction: {
       short: "构造",
@@ -459,6 +464,8 @@ const JA: Dict = {
   missionTypesSupported: "現在対応",
   missionTypesPlanned: "ロードマップ",
   missionTypeCurrent: "このミッション",
+  missionTypesRewardNote:
+    "XP はブレイクスルーごとに付与されます。チュートリアル試練は一律 100 XP。発表済みの文献記録を超えると 100,000 XP のマイルストーンボーナス。",
   missionTypes: {
     construction: {
       short: "構築",
@@ -593,6 +600,8 @@ const KO: Dict = {
   missionTypesSupported: "현재 지원",
   missionTypesPlanned: "로드맵",
   missionTypeCurrent: "이 미션",
+  missionTypesRewardNote:
+    "XP는 돌파마다 지급됩니다. 튜토리얼 시련은 일괄 100 XP; 발표된 문헌 기록을 넘어서면 100,000 XP 마일스톤 보너스.",
   missionTypes: {
     construction: {
       short: "구성",

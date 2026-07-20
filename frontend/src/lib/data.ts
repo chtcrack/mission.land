@@ -51,7 +51,7 @@ export type Champion = { author: string; xp: number; records: number };
 
 export type Mission = {
   id: string; // "1"
-  slug: string; // "1-weak-schur-6"
+  slug: string; // "1-ramsey-5-5"
   num: number; // 1
   name: Record<Lang, string>; // "Weak Schur WS(6)", per language
   tagline: Record<Lang, string>;
@@ -118,16 +118,16 @@ const META: Record<
     rewardMode: "completion",
   },
   1: {
-    name: "Weak Schur WS(6)",
-    wax: "#8f2d2d",
-    xpPerBreakthrough: 4000,
+    name: "Ramsey R(5,5)",
+    wax: "#a8801f",
+    xpPerBreakthrough: 7000,
     tagline: {
       en: "Push the lower bound",
       zh: "推进下界",
       ja: "下界を押し上げろ",
       ko: "하한을 끌어올려라",
     },
-    wikipedia: "https://en.wikipedia.org/wiki/Schur%27s_theorem",
+    wikipedia: "https://en.wikipedia.org/wiki/Ramsey%27s_theorem",
   },
   2: {
     name: "van der Waerden W(2,7)",
@@ -142,16 +142,16 @@ const META: Record<
     wikipedia: "https://en.wikipedia.org/wiki/Van_der_Waerden%27s_theorem",
   },
   3: {
-    name: "Ramsey R(5,5)",
-    wax: "#a8801f",
-    xpPerBreakthrough: 7000,
+    name: "Weak Schur WS(6)",
+    wax: "#8f2d2d",
+    xpPerBreakthrough: 4000,
     tagline: {
       en: "Push the lower bound",
       zh: "推进下界",
       ja: "下界を押し上げろ",
       ko: "하한을 끌어올려라",
     },
-    wikipedia: "https://en.wikipedia.org/wiki/Ramsey%27s_theorem",
+    wikipedia: "https://en.wikipedia.org/wiki/Schur%27s_theorem",
   },
   4: {
     name: "√2 is Irrational (Lean)",

@@ -1,4 +1,4 @@
-# 1 — 弱 Schur 数 WS(6)：推进下界
+# 3 — 弱 Schur 数 WS(6)：推进下界
 
 ## 问题
 
@@ -16,7 +16,7 @@
 
 ```json
 {
-  "mission": "1-weak-schur-6",
+  "mission": "3-weak-schur-6",
   "author": "your-handle",
   "date": "YYYY-MM-DD",
   "score": 160,

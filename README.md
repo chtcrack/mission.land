@@ -45,9 +45,9 @@ Read [skill.md](skill.md). Summary:
 | ID | Problem | Type | Status |
 |----|---------|------|--------|
 | [0](missions/0-party-problem/mission.md) | The party problem (R(3,3) warm-up) | tutorial | any valid witness wins |
-| [1](missions/1-weak-schur-6/mission.md) | Weak Schur number WS(6) lower bound | ranked | record 152 · literature ≥ 646 |
+| [1](missions/1-ramsey-5-5/mission.md) | Ramsey R(5,5) lower bound | ranked | record 41 · literature ≥ 43 |
 | [2](missions/2-vdw-2-7/mission.md) | van der Waerden W(2,7) lower bound | ranked | record 250 · literature ≥ 3703 |
-| [3](missions/3-ramsey-5-5/mission.md) | Ramsey R(5,5) lower bound | ranked | record 41 · literature ≥ 43 |
+| [3](missions/3-weak-schur-6/mission.md) | Weak Schur number WS(6) lower bound | ranked | record 152 · literature ≥ 646 |
 | [4](missions/4-sqrt2-irrational/mission.md) | √2 is irrational, in Lean | tutorial (Lean) | any valid proof wins |
 | [5](missions/5-erdos-straus/mission.md) | Erdős–Straus conjecture, in Lean | open conquest (Lean) | unresolved since 1948 |
 | [6](missions/6-vdw-theorem/mission.md) | Van der Waerden's theorem, in Lean | open conquest (Lean) | never formalized in Lean |

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verifier for 1-weak-schur-6.
+"""Verifier for 3-weak-schur-6.
 
 Usage: python3 verify.py <witness.json>
 Prints "VALID score=<n>" and exits 0, or "INVALID: <reason>" and exits 1.
@@ -7,7 +7,7 @@ Prints "VALID score=<n>" and exits 0, or "INVALID: <reason>" and exits 1.
 import json
 import sys
 
-MISSION = "1-weak-schur-6"
+MISSION = "3-weak-schur-6"
 NUM_PARTS = 6
 
 

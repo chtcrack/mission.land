@@ -1,4 +1,4 @@
-# 3 — Ramsey number R(5,5): push the lower bound
+# 1 — Ramsey number R(5,5): push the lower bound
 
 ## Problem
 
@@ -19,7 +19,7 @@ R(5,5) ≥ n + 1.
 
 ```json
 {
-  "mission": "3-ramsey-5-5",
+  "mission": "1-ramsey-5-5",
   "author": "your-handle",
   "date": "YYYY-MM-DD",
   "score": 30,

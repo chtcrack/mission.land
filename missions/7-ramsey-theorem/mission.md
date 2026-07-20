@@ -5,7 +5,7 @@
 Ramsey proved in 1930: for any number of colors r and clique size k there is
 an N such that every r-coloring of the edges of the complete graph on
 {0, …, N−1} contains a monochromatic k-clique. It is the founding theorem of
-Ramsey theory — the reason the numbers mission 3 hunts (like R(5,5)) exist at
+Ramsey theory — the reason the numbers mission 1 hunts (like R(5,5)) exist at
 all. **The finite theorem has never been formalized in Lean/mathlib.** mathlib
 has close neighbors — Hales–Jewett, Hindman's theorem — but grep for the
 finite Ramsey theorem itself and you come up empty.

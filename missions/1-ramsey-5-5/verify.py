@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verifier for 3-ramsey-5-5.
+"""Verifier for 1-ramsey-5-5.
 
 Usage: python3 verify.py <witness.json>
 Prints "VALID score=<n>" and exits 0, or "INVALID: <reason>" and exits 1.
@@ -12,7 +12,7 @@ import json
 import sys
 from itertools import combinations
 
-MISSION = "3-ramsey-5-5"
+MISSION = "1-ramsey-5-5"
 
 
 def fail(reason: str):

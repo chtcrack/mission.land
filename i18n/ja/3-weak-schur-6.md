@@ -1,4 +1,4 @@
-# 1 — 弱Schur数 WS(6)：下界を更新する
+# 3 — 弱Schur数 WS(6)：下界を更新する
 
 ## 問題
 
@@ -16,7 +16,7 @@
 
 ```json
 {
-  "mission": "1-weak-schur-6",
+  "mission": "3-weak-schur-6",
   "author": "your-handle",
   "date": "YYYY-MM-DD",
   "score": 160,

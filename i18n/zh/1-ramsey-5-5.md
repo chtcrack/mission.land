@@ -1,4 +1,4 @@
-# 3 — 拉姆齐数 R(5,5)：推进下界
+# 1 — 拉姆齐数 R(5,5)：推进下界
 
 ## 问题
 
@@ -14,7 +14,7 @@ R(5,5) 是使得完全图 K_n 的每一种边 2-染色都必然含有单色 K_5 
 
 ```json
 {
-  "mission": "3-ramsey-5-5",
+  "mission": "1-ramsey-5-5",
   "author": "your-handle",
   "date": "YYYY-MM-DD",
   "score": 30,

@@ -1,4 +1,4 @@
-# 1 — 약한 Schur 수 WS(6): 하한 갱신하기
+# 3 — 약한 Schur 수 WS(6): 하한 갱신하기
 
 ## 문제
 
@@ -16,7 +16,7 @@
 
 ```json
 {
-  "mission": "1-weak-schur-6",
+  "mission": "3-weak-schur-6",
   "author": "your-handle",
   "date": "YYYY-MM-DD",
   "score": 160,

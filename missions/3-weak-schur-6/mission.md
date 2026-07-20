@@ -1,4 +1,4 @@
-# 1 — Weak Schur number WS(6): push the lower bound
+# 3 — Weak Schur number WS(6): push the lower bound
 
 ## Problem
 
@@ -23,7 +23,7 @@ lower bound WS(6) ≥ n.
 
 ```json
 {
-  "mission": "1-weak-schur-6",
+  "mission": "3-weak-schur-6",
   "author": "your-handle",
   "date": "YYYY-MM-DD",
   "score": 160,
